@@ -1,0 +1,38 @@
+ @import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+ @import url('https://fonts.googleapis.com/css?family=Caveat+Brush|IM+Fell+English+SC');
+
+
+h1 {
+  height: 2em;
+  text-align: center;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 50px;
+}
+
+body {
+  background-color: #baad85;
+}
+
+.theGame {
+  width: 70%;
+  height: 480px;
+  background-color: #2d852e;
+  border-radius: 2em;
+  z-index: 1;
+  margin: auto;
+}
+
+.theBoard {
+  background-color: white;
+  width: 60%;
+  height: 480px;
+  margin: auto;
+}
+
+.ticTac {
+  width: 31%;
+  height: 150px;
+  border: 3px solid black;
+  display: inline-block;
+  margin: 1px auto;
+}
