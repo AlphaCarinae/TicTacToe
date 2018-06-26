@@ -14,7 +14,7 @@ const summArray = function(array) {
 
 //checking an array for a winner
 const checkArray = function (array) {
-  console.log(array);
+
   result='';
 
   for (var i = 0; i < array.length; i++) {
@@ -41,10 +41,10 @@ const ticTacToe = {
 
   //method to let a player mark the board on row,column coordinates
   mark : function (player,row,column) {
-    if (player === 'player1') {
-      this.theBoard[row][column] = 1;
-    } else if (player === 'player2') {
-      this.theBoard[row][column] = -1;
+    if (player === 'player1' && this.theBoard[row-1][column-1] === 0) {
+      this.theBoard[row-1][column-1] = 1;
+    } else if (player === 'player2' && this.theBoard[row-1][column-1] === 0) {
+      this.theBoard[row-1][column-1] = -1;
     }
   },
 
@@ -56,6 +56,7 @@ const ticTacToe = {
       }
     }
   },
+
 
   //method to check the board for a winner after every move
   checkBoard : function () {
@@ -73,11 +74,16 @@ const ticTacToe = {
     }
 
     //checking all the columns
+    let zeroCount = 0;
     for (var j = 0; j < this.theBoard.length; j++) {
 
       columns=[];
       for (var i = 0; i < this.theBoard.length; i++) {
         columns.push(this.theBoard[i][j]);
+        //counting zeros to decide if draw
+        if (this.theBoard[i][j] === 0) {
+          zeroCount += 1;
+        }
       }
 
       winner = checkArray(columns);
@@ -85,6 +91,8 @@ const ticTacToe = {
       if (winner !== '') {
         return winner;
       }
+
+
     }
 
     //checking the diagonals
@@ -105,6 +113,13 @@ const ticTacToe = {
     if (winner !== '') {
       return winner;
     }
+    //if no zeros are found after the final array check,
+    //we are out of moves without a winner and 'draw' shall be returned
+    if (zeroCount === 0) {
+      winner = 'Draw'
+    }
+
+    return winner;
 
   }
 

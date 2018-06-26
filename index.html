@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="css/main.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript" src="js/game.js"></script>
   <script type="text/javascript" src="js/interface.js"></script>
+  <script type="text/javascript" src="js/game.js"></script>
+
 
 
 
@@ -19,21 +20,54 @@
 
   <h1>A game of Tic Tac Toe</h1>
 
-  <div class="theGame">
-    <div class="theBoard">
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
-        <div class="ticTac"></div>
+<div class="theGame">
 
-    </div>
-
+  <div id="Player1">
+    <h2>Player 1</h2>
   </div>
+
+<table>
+  <tr id="row1">
+    <td id="col1"></td>
+    <td id="col2"></td>
+    <td id="col3"></td>
+  </tr>
+  <tr id="row2">
+    <td id="col1"></td>
+    <td id="col2"></td>
+    <td id="col3"></td>
+  </tr>
+  <tr id="row3">
+    <td id="col1"></td>
+    <td id="col2"></td>
+    <td id="col3"></td>
+  </tr>
+</table>
+
+<div id="Player2">
+  <h2>Player 2</h2>
+</div>
+
+<div class="controls">
+
+  <input type="text">
+  <input type="radio" name="player" value="" id="player1">
+  <label for="player1"> Player 1</label>
+  <input type="radio" name="player" value="" id="player2">
+  <label for="player2"> Player 2</label>
+  <button type="button" name="newName">Change player name</button>
+
+</div>
+
+<div class="reset">
+  <button type="button" name="reset" id="reset">Reset Game</button>
+</div>
+
+</div>
+
+<div class="gameResult hidden">
+  <p>Player1 Wins!</p>
+</div>
 
 </body>
 </html>
