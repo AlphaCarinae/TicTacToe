@@ -1,6 +1,8 @@
 console.log("interface.js conneted");
 
 let turn = 'player1';
+let player1Name = '';
+let player2Name = '';
 
 const playGame = function (element) {
 
@@ -22,13 +24,28 @@ const playGame = function (element) {
       turn = 'player1';
     }
 
-  } else {
-      console.log(`${gameState} Wins!` );
-      $(".gameResult").text(`${gameState} Wins!`)
+  } else if ( gameState === 'player1') {
+
+      console.log(`${player1Name} Wins!` );
+      $(".gameResult").text(`${player1Name} Wins!`)
       $(".gameResult").removeClass('hidden')
       //no more clicking on the board after someone wins
       $('td').unbind('click');
-    }
+    } else if ( gameState === 'player2') {
+
+        console.log(`${player2Name} Wins!` );
+        $(".gameResult").text(`${player2Name} Wins!`)
+        $(".gameResult").removeClass('hidden')
+        //no more clicking on the board after someone wins
+        $('td').unbind('click');
+      } else if ( gameState === 'Draw') {
+
+          console.log(`It's a Draw!` );
+          $(".gameResult").text(`It's a Draw!`)
+          $(".gameResult").removeClass('hidden')
+          //no more clicking on the board after someone wins
+          $('td').unbind('click');
+        }
   }
 
 
@@ -60,6 +77,9 @@ const updateBoard = function() {
 
 $(document).ready(function () {
 
+  player1Name = $("#player1").find('h2').html();
+  player2Name = $("#player2").find('h2').html();
+
   $('td').on('click', function () {
     let that = this;
     playGame(that);
@@ -69,13 +89,33 @@ $(document).ready(function () {
     console.log('reset');
     ticTacToe.clear();
     updateBoard();
-//re-bind click to the board
+    //re-bind click to the board
     $('td').on('click', function () {
       let that = this;
       playGame(that);
     });
-//hide the gameResultbanner
+    //hide the gameResultbanner
     $(".gameResult").addClass('hidden')
   })
+
+//read Player name values and change the player names on screen
+
+    $('#changeName').on('click', function() {
+      console.log($(':checked').attr("id"));
+      if ($(':checked').attr("id") === 'p1') {
+        player1Name = $('#newName').val();
+        $("#player1").find('h2').html(player1Name);
+        console.log(player1Name);
+
+      } else if ($(':checked').attr("id") === 'p2') {
+        player2Name = $('#newName').val();
+        $("#player2").find('h2').html(player2Name);
+        console.log(player2Name);
+      }
+
+
+
+
+    })
 
 })
