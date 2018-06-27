@@ -4,6 +4,7 @@ let turn = 'player1';
 let player1Name = '';
 let player2Name = '';
 
+//this is run when a player clicks on one of the td elements on the board
 const playGame = function (element) {
 
   let rowName = $(element).parent().attr('id');
@@ -57,13 +58,13 @@ const updateBoard = function() {
 
       switch (ticTacToe.theBoard[i][j]) {
         case 0:
-          $(`#row${i+1} #col${j+1}`).text(' ');
+          $(`#row${i+1} #col${j+1} div`).text(' ');
           break;
         case 1:
-          $(`#row${i+1} #col${j+1}`).text('X');
+          $(`#row${i+1} #col${j+1} div`).text('X');
           break;
         case -1:
-          $(`#row${i+1} #col${j+1}`).text('O');
+          $(`#row${i+1} #col${j+1} div`).text('O');
           break;
         default:
 
@@ -73,6 +74,44 @@ const updateBoard = function() {
   }
 }
 
+//this function is triggered when a new board size has been chosen and updates the table
+
+const changeBoardSize = function() {
+  //clean the current table on screen
+  $('table').html(' ');
+  //construct the html code for the table
+  let newTable = ''
+  for (var i = 0; i < ticTacToe.theBoard.length; i++) {
+    newTable += `<tr id="row${i+1}">\n`;
+    for (var j = 0; j < ticTacToe.theBoard.length; j++) {
+      newTable += `<td id="col${j+1}"><div></div></td>\n`;
+    }
+    newTable += `</tr>\n`;
+  };
+  //insert the html code for the new table size
+  $('table').html(newTable);
+  //this is where we handle the styling for the new size board
+    //width
+    let tdSize = 400 / ticTacToe.theBoard.length;
+    $('td div').width(`${tdSize}px`);
+    //height
+    $('td div').height(`${tdSize}px`);
+    //font size
+    $('td div').css("font-size",`${tdSize * .85}px`);
+
+  //after the new table is created we need to rebind clicking to td elements
+  clickBindTd();
+
+}
+
+//DRY up the code by doing the click bind to td element in table
+const clickBindTd =  function() {
+  $('td').on('click', function () {
+    let that = this;
+    playGame(that);
+  });
+}
+
 
 
 $(document).ready(function () {
@@ -80,20 +119,16 @@ $(document).ready(function () {
   player1Name = $("#player1").find('h2').html();
   player2Name = $("#player2").find('h2').html();
 
-  $('td').on('click', function () {
-    let that = this;
-    playGame(that);
-  });
+  clickBindTd();
+
+
 //clear the boards if reset button is pressed
   $('#reset').on('click', function() {
     console.log('reset');
     ticTacToe.clear();
     updateBoard();
     //re-bind click to the board
-    $('td').on('click', function () {
-      let that = this;
-      playGame(that);
-    });
+    clickBindTd();
     //hide the gameResultbanner
     $(".gameResult").addClass('hidden')
   })
@@ -113,9 +148,15 @@ $(document).ready(function () {
         console.log(player2Name);
       }
 
-
-
-
     })
+
+//on new value on board range slide input, recreate the boards
+
+      $('input[type="range"]').on('input',function() {
+        let size = $(this).val();
+        $("#boardSizeDial").find('p').html(`Board Size: ${size}`);
+        ticTacToe.createBoard(size);
+        changeBoardSize();
+      })
 
 })

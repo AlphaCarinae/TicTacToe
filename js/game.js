@@ -121,6 +121,18 @@ const ticTacToe = {
 
     return winner;
 
+  },
+
+  //add method to create a board of any size
+  createBoard : function (boardSize) {
+    ticTacToe.theBoard = [];
+    for (var i = 0; i < boardSize; i++) {
+      let row = [];
+      for (var j = 0; j < boardSize; j++) {
+        row.push(0);
+      }
+      ticTacToe.theBoard.push(row);
+    }
   }
 
 }

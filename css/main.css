@@ -22,14 +22,20 @@ table {
 }
 
 td {
-  width: 8rem;
-  height: 8rem;
+
   background-color: #2799d1;
   border-radius: 1rem;
   font-family: 'Caveat Brush', cursive;
-  font-size: 6rem;
+
   overflow: hidden;
   text-align: center;
+}
+
+td div {
+  width: 130px;
+  height: 130px;
+  font-size: 110px;
+  line-height: normal;
 }
 
 h2 {
@@ -38,14 +44,15 @@ h2 {
   width: 80%;
   text-align: center;
   display: inline-block;
-  line-height: normal;
+
   margin-top: 1.7rem;
 }
 
-button {
+button, p {
   font-family: 'Caveat Brush', cursive;
   font-size: 1.3rem;
 }
+
 
 .theGame {
   display: grid;
