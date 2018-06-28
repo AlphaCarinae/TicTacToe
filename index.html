@@ -10,6 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript" src="js/interface.js"></script>
   <script type="text/javascript" src="js/game.js"></script>
+  <!-- <script type="text/javascript" src="js/ai.js"></script> -->
 
 
 
@@ -24,7 +25,7 @@
 
 <div class="theGame">
 
-  <!-- the controls -->
+  <!-- the controls where name change happens-->
   <div></div>
 
   <div class="controls">
@@ -37,16 +38,16 @@
     <button type="button" name="newName" id="changeName">Change player name</button>
 
   </div>
-
+<!-- reset button for the game -->
   <div class="reset">
     <button type="button" name="reset" id="reset" >Reset Game</button>
   </div>
-
+<!-- placeholder for the Player Name and sign -->
   <div id="player1">
     <h2 class="activePlayer">Player 1</h2>
     <p class="activeLetter">X</p>
   </div>
-  <!-- the table and players -->
+  <!-- the game board -->
 <table>
   <tr id="row1">
     <td id="col1"><div></div></td>
@@ -65,6 +66,7 @@
   </tr>
 </table>
 
+<!-- placeholder for the Player Name and sign -->
 <div id="player2">
   <h2>Player 2</h2>
   <p>O</p>
@@ -78,7 +80,7 @@
 </div>
 
 </div>
-
+<!--Winner announcement banner to appear when the game ends  -->
 <div class="gameResult hidden">
   <p>Player1 Wins!</p>
 </div>

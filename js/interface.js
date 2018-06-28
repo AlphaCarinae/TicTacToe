@@ -5,7 +5,9 @@ let player1Name = '';
 let player2Name = '';
 
 //this is run when a player clicks on one of the td elements on the board
+//or when it is called as part of the AI play
 const playGame = function (element) {
+
 
   let rowName = $(element).parent().attr('id');
   let colName = $(element).attr('id');
@@ -16,6 +18,7 @@ const playGame = function (element) {
   let marked = ticTacToe.mark(turn,row,col);
   updateBoard();
 
+//handling turn based animations and effects
   let gameState = ticTacToe.checkBoard();
   if ( gameState === '' && marked === true) {
 
@@ -34,7 +37,7 @@ const playGame = function (element) {
       $('#player2 p').removeClass('activeLetter');
       $('#player1 p').addClass('activeLetter');
     }
-
+//in case of a winner the result banner will pop up here
   } else if ( gameState === 'player1') {
 
       console.log(`${player1Name} Wins!` );
@@ -115,22 +118,27 @@ const changeBoardSize = function() {
 
 }
 
-//DRY up the code by doing the click bind to td element in table
+//DRYed up the code by doing the click bind to td element in table
 const clickBindTd =  function() {
   $('td').on('click', function () {
     let that = this;
     playGame(that);
+    //when The Machine is called to play
+    if (player1Name === "The Machine" || player2Name === "The Machine") {
+      theMachineMoves();
+    }
   });
 }
 
 
-
+//load functions that are DOM dependent here
 $(document).ready(function () {
 
   player1Name = $("#player1").find('h2').html();
   player2Name = $("#player2").find('h2').html();
 
   clickBindTd();
+
 
 
 //clear the boards if reset button is pressed
@@ -142,6 +150,11 @@ $(document).ready(function () {
     clickBindTd();
     //hide the gameResultbanner
     $(".gameResult").addClass('hidden')
+
+    //return the focus on player1 name
+
+    $('#player1 h2').removeClass('inactivePlayer');
+    $('#player1 h2').addClass('activePlayer');
   })
 
 //read Player name values and change the player names on screen
@@ -151,6 +164,11 @@ $(document).ready(function () {
       if ($(':checked').attr("id") === 'p1') {
         player1Name = $('#newName').val();
         $("#player1").find('h2').html(player1Name);
+        //this is where we make a decision if a player is gonna be played by the computer
+
+        if (player1Name ==='The Machine') {
+          theMachineMoves();
+        };
         console.log(player1Name);
 
       } else if ($(':checked').attr("id") === 'p2') {
@@ -168,6 +186,7 @@ $(document).ready(function () {
         $("#boardSizeDial").find('p').html(`Board Size: ${size}`);
         ticTacToe.createBoard(size);
         changeBoardSize();
+        $(".gameResult").addClass('hidden')
       })
 
 })
