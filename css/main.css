@@ -146,11 +146,11 @@ input[type="text"] {
 }
 /* classes to handle the moving shadow effect */
 .activePlayer {
-  box-shadow: 0vw 0vw 3vw black;
+  box-shadow: 0vw 1vw 3vw black;
 }
 
 .inactivePlayer {
-  box-shadow: 79vw 0vw 3vw black;
+  box-shadow: 79vw 1vw 3vw black;
 }
 /* handling the active playing letter on the sides */
 .activeLetter {
