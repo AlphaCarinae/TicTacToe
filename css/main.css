@@ -3,15 +3,17 @@
 
 
 h1 {
-  height: 2em;
+  height: 6vw;
   text-align: center;
   font-family: 'IM Fell English SC', serif;
-  font-size: 50px;
-  margin-bottom: .1em;
+  font-size: 6vw;
+  margin-top: 3vw;
+  margin-bottom: 2vw;
 }
 
 body {
   background-color: #cac8c1;
+
   /* background-image: url("../images/backgrnd.jpg"); */
 }
 
@@ -24,7 +26,7 @@ table {
 td {
 
   background-color: #2799d1;
-  border-radius: 1rem;
+  border-radius: 1vw;
   font-family: 'Caveat Brush', cursive;
 
   overflow: hidden;
@@ -32,25 +34,63 @@ td {
 }
 
 td div {
-  width: 130px;
-  height: 130px;
-  font-size: 110px;
-  line-height: normal;
+  width: 13vw;
+  height: 13vw;
+  font-size: 15vw;
+  line-height: 13vw;
 }
+
+#player1 p {
+  visibility: hidden;
+}
+
+#player2 p {
+  visibility: hidden;
+}
+
+#boardSizeDial p {
+  font-family: 'Caveat Brush', cursive;
+  font-size: 2vw;
+  margin: auto;
+
+}
+
+#boardSizeDial {
+  margin: auto;
+  text-align: center;
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+
+
 
 h2 {
   font-family: 'IM Fell English SC', serif;
-  font-size: 1.7rem;
+  font-size: 3vw;
   width: 80%;
   text-align: center;
-  display: inline-block;
+  transition-duration: 0.3s;
+  margin: auto;
+  margin-top: 3vw;
+  border-radius: 1vw;
+  background-color: #ffa500;
 
-  margin-top: 1.7rem;
 }
 
-button, p {
+
+button  {
   font-family: 'Caveat Brush', cursive;
-  font-size: 1.3rem;
+  font-size: 2vw;
+
+}
+
+input[type="range"] {
+  margin-bottom: 2vw;
+
+}
+
+input[type="text"] {
+  font-size: 2vw;
 }
 
 
@@ -61,18 +101,19 @@ button, p {
 }
 
 .controls {
-  grid-column: 2/3;
-  grid-row: 2/3;
+
   justify-self: center;
-  margin-top: 2rem;
+  font-size: 2vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
   font-family: 'Caveat Brush', cursive;
 }
 
 .reset {
-  grid-column: 3/4;
-  grid-row: 2/3;
+
   justify-self: center;
-  margin-top: 2rem;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
   font-family: 'Caveat Brush', cursive;
 }
 
@@ -85,15 +126,31 @@ button, p {
   background-color: rgba(200, 0, 0, 0.85);
   color: white;
   font-family: 'IM Fell English SC', serif;
-  font-size: 5rem;
+  font-size: 7vw;
   text-align: center;
   margin: auto;
-  border-radius: 0.5rem;
-  line-height: 10rem;
+  border-radius: 0.5vw;
+  line-height: 14vw;
 
 
 }
 
 .hidden {
   visibility: hidden;
+}
+
+.activePlayer {
+  box-shadow: 0vw 0vw 3vw black;
+}
+
+.inactivePlayer {
+  box-shadow: 79vw 0vw 3vw black;
+}
+
+.activeLetter {
+  font-size: 14vw;
+  text-align: center;
+  line-height: 0;
+  visibility: visible !important;
+  font-family: 'Caveat Brush', cursive;
 }

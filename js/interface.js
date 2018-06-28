@@ -13,16 +13,26 @@ const playGame = function (element) {
   let row = + rowName[3];
   let col = + colName[3];
 
-  ticTacToe.mark(turn,row,col);
+  let marked = ticTacToe.mark(turn,row,col);
   updateBoard();
 
   let gameState = ticTacToe.checkBoard();
-  if ( gameState === '') {
+  if ( gameState === '' && marked === true) {
 
     if (turn === 'player1') {
       turn = 'player2';
+      $('#player1 h2').addClass('inactivePlayer');
+      $('#player1 h2').removeClass('activePlayer');
+
+      $('#player1 p').removeClass('activeLetter');
+      $('#player2 p').addClass('activeLetter');
     } else {
       turn = 'player1';
+      $('#player1 h2').removeClass('inactivePlayer');
+      $('#player1 h2').addClass('activePlayer');
+
+      $('#player2 p').removeClass('activeLetter');
+      $('#player1 p').addClass('activeLetter');
     }
 
   } else if ( gameState === 'player1') {
@@ -92,13 +102,14 @@ const changeBoardSize = function() {
   $('table').html(newTable);
   //this is where we handle the styling for the new size board
     //width
-    let tdSize = 400 / ticTacToe.theBoard.length;
-    $('td div').width(`${tdSize}px`);
+    let boxSize = 39; //in vw scale
+    let tdSize = (39) / ticTacToe.theBoard.length;
+    $('td div').width(`${tdSize}vw`);
     //height
-    $('td div').height(`${tdSize}px`);
+    $('td div').height(`${tdSize}vw`);
     //font size
-    $('td div').css("font-size",`${tdSize * .85}px`);
-
+    $('td div').css("font-size",`${tdSize * 1.13333}vw`);
+    $('td div').css("line-height", `${tdSize}vw`);
   //after the new table is created we need to rebind clicking to td elements
   clickBindTd();
 

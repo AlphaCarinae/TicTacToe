@@ -43,8 +43,12 @@ const ticTacToe = {
   mark : function (player,row,column) {
     if (player === 'player1' && this.theBoard[row-1][column-1] === 0) {
       this.theBoard[row-1][column-1] = 1;
+      return true;
     } else if (player === 'player2' && this.theBoard[row-1][column-1] === 0) {
       this.theBoard[row-1][column-1] = -1;
+      return true;
+    } else {
+      return false;
     }
   },
 

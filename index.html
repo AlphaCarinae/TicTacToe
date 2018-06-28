@@ -20,12 +20,33 @@
 
   <h1>A game of Tic Tac Toe</h1>
 
+
+
 <div class="theGame">
 
-  <div id="player1">
-    <h2>Player 1</h2>
+  <!-- the controls -->
+  <div></div>
+
+  <div class="controls">
+
+    <input type="text" id="newName">
+    <input type="radio" name="player" value="" id="p1">
+    <label for="p1"> Player 1</label>
+    <input type="radio" name="player" value="" id="p2">
+    <label for="p2"> Player 2</label>
+    <button type="button" name="newName" id="changeName">Change player name</button>
+
   </div>
 
+  <div class="reset">
+    <button type="button" name="reset" id="reset" >Reset Game</button>
+  </div>
+
+  <div id="player1">
+    <h2 class="activePlayer">Player 1</h2>
+    <p class="activeLetter">X</p>
+  </div>
+  <!-- the table and players -->
 <table>
   <tr id="row1">
     <td id="col1"><div></div></td>
@@ -46,26 +67,14 @@
 
 <div id="player2">
   <h2>Player 2</h2>
+  <p>O</p>
 </div>
 
+<!-- board size selection at the bottom -->
 <div id="boardSizeDial">
-  <input type="range" min="3" max="9" step="1" value="3" >
   <p>Board Size: 3</p>
-</div>
+  <input type="range" min="3" max="9" step="1" value="3" >
 
-<div class="controls">
-
-  <input type="text" id="newName">
-  <input type="radio" name="player" value="" id="p1">
-  <label for="p1"> Player 1</label>
-  <input type="radio" name="player" value="" id="p2">
-  <label for="p2"> Player 2</label>
-  <button type="button" name="newName" id="changeName">Change player name</button>
-
-</div>
-
-<div class="reset">
-  <button type="button" name="reset" id="reset" >Reset Game</button>
 </div>
 
 </div>
