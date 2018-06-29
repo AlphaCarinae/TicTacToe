@@ -124,9 +124,9 @@ const clickBindTd =  function() {
     let that = this;
     playGame(that);
     //when The Machine is called to play
-    if (player1Name === "The Machine" || player2Name === "The Machine") {
-      theMachineMoves();
-    }
+    // if (player1Name === "The Machine" || player2Name === "The Machine") {
+    //   theMachineMoves();
+    // }
   });
 }
 
@@ -166,9 +166,9 @@ $(document).ready(function () {
         $("#player1").find('h2').html(player1Name);
         //this is where we make a decision if a player is gonna be played by the computer
 
-        if (player1Name ==='The Machine') {
-          theMachineMoves();
-        };
+        // if (player1Name ==='The Machine') {
+        //   theMachineMoves();
+        // };
         console.log(player1Name);
 
       } else if ($(':checked').attr("id") === 'p2') {
@@ -183,7 +183,7 @@ $(document).ready(function () {
 
       $('input[type="range"]').on('input',function() {
         let size = $(this).val();
-        $("#boardSizeDial").find('p').html(`Board Size: ${size}`);
+        $("#boardSizeDial").find('p').html(`Board Size: ${size}x${size}`);
         ticTacToe.createBoard(size);
         changeBoardSize();
         $(".gameResult").addClass('hidden')
